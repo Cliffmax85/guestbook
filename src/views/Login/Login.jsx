@@ -11,6 +11,12 @@ export default function Login() {
                     type='email'
                     placeholder="Enter Email"
                   />
+                  <input
+                    id='password'
+                    name='password'
+                    type='password'
+                    placeholder="Enter Password"
+                  />
               </label>
           </form>
         </>
