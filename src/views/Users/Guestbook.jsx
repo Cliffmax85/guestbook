@@ -1,11 +1,27 @@
 import { useUser } from "../../context/UserContext";
 import { useEffect, useState } from "react";
+import Entries from "../../components/Entries";
+import { getEntries } from "../../services/entries";
 
 export default function Guestbook() {
+    const { user } = useUser();
+    const [entries, setEntries] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchEntries = () => {
+        getEntries()
+          .then(setEntries)
+          .finally(() => setLoading(false))
+    };
+    
+    useEffect(() => {
+        fetchEntries();
+    }, []);
+
+
     return (
-      <>  
-        <h1>Guestbook</h1>
-        <p>Sup {user.email}?</p>
-      </>
+        <>
+          <Entries addEntry={fetchEntries}/>
+        </>
     )
 }
