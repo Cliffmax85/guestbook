@@ -3,40 +3,47 @@ import { useState} from 'react';
 import { useLocation, useHistory } from 'react-router-dom'; 
 
 export default function Login() {
-  const { login } = useUser();
+  const { login, signUp } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const location = useLocation();
   const history = useHistory();
 
-  const handleFormSubmit = async (e) => {
+  const handleLogin = async (e) => {
     try {
       e.preventDefault();
       await login(email, password);
 
-      const url = location.state.origin ? location.state.origin.pathname : '/';
+      const url = location.search.origin ? location.search.pathname : '/';
         history.replace(url);
     } catch (error) {
       setError(error.message);
     }
   }
+
+  const handleSignUp = async () => {
+    try {
+      await signUp(email, password);
+      const url = location.search.origin ? location.search.pathname : '/';
+
+      history.replace(url);
+    } catch(error) {
+      setError(error.message)
+    }
+  }
   return(
         <>
         <h2>Login</h2>
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleLogin}>
               <label>
                   <input
-                    id='email'
-                    name='email'
                     type='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter Email"
                   />
                   <input
-                    id='password'
-                    name='password'
                     type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -44,6 +51,7 @@ export default function Login() {
                   />
               </label>
               <button type="submit">Sign In</button>
+              <button onClick={handleSignUp}>Sign Up, Dummy!</button>
               <p>{error}</p>
           </form>
         </>
