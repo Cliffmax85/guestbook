@@ -13,7 +13,7 @@ export default function App() {
       <PrivateRoute path='/guestbook'>
         <Guestbook />
       </PrivateRoute>
-      <Route path='home'>
+      <Route path='/'>
         <Home />
       </Route>
     </Switch>
