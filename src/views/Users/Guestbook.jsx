@@ -22,6 +22,9 @@ export default function Guestbook() {
     return (
         <>
           <Entries addEntry={fetchEntries}/>
+          <ul>{entries.map((entry) => (
+              <li key={entry.id}>{entry.content} written by: {user.email}</li>
+          ))} </ul>
         </>
     )
 }
