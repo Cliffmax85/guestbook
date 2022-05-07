@@ -7,7 +7,7 @@ export default function Guestbook() {
     const { user, logout } = useUser();
     const [entries, setEntries] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    
     const fetchEntries = () => {
         getEntries()
           .then(setEntries)
@@ -24,7 +24,7 @@ export default function Guestbook() {
           <button onClick={logout}>Log out, Dawg</button>
           <Entries addEntry={fetchEntries}/>
           <ul>{entries.map((entry) => (
-              <li key={entry.id}>{entry.content} written by: {user.email}</li>
+              <li key={entry.id}>{entry.content} written by: {user.email} Joined Guestbook at: {user.created_at}</li>
           ))} </ul>
         </>
     )
