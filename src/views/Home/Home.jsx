@@ -5,7 +5,8 @@ export default function Home() {
         <>
           <h1>Home</h1>
           <Link to='/guestbook'>Checkout out the Guestbook, Yo!</Link>
-          <Link to='/login'>WOuld you like to log in?</Link>
+          <br></br>
+          <Link to='/login'>Go Log in!</Link>
         </>
     )
 }
