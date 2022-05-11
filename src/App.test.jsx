@@ -40,7 +40,7 @@ it('should be able to login and post', async () => {
     const signUp = screen.getByRole('button', { name: 'Sign Up, Dummy!' });
     userEvent.click(signUp);
 
-    await screen.findByText(/home/i);
+    // await screen.findByText(/home/i);
 
     const gBookLink = await screen.findByRole('input')
     userEvent.click(gBookLink);
