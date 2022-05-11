@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
@@ -7,13 +8,15 @@ import Guestbook from "./views/Users/Guestbook";
 export default function App() {
   return (
     <Switch>
+      <PrivateRoute path='/guestbook'>
+        <Header />
+        <Guestbook />
+      </PrivateRoute>
       <Route path='/login'>
         <Login />
       </Route>
-      <PrivateRoute path='/guestbook'>
-        <Guestbook />
-      </PrivateRoute>
       <Route path='/'>
+        <Header />
         <Home />
       </Route>
     </Switch>
