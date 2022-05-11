@@ -7,15 +7,15 @@ import Guestbook from "./views/Users/Guestbook";
 export default function App() {
   return (
     <Switch>
-      <Route path='/login'>
-        <Login />
-      </Route>
       <PrivateRoute path='/guestbook'>
         <Guestbook />
       </PrivateRoute>
-      <PrivateRoute path='/'>
+      <Route path='/login'>
+        <Login />
+      </Route>
+      <Route path='/'>
         <Home />
-      </PrivateRoute>
+      </Route>
     </Switch>
   );
 }
